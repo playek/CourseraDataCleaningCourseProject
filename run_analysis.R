@@ -40,10 +40,6 @@ cleanToTidy<-function ( dataPath="." )
   # merge test and training sets into one data set
   full_d<-rbind(test_d,train_d)
   
-  # extract only the measurements on the mean and standard deviation for each measurement
-  fullData_mean<-sapply(full_d,mean,na.rm=TRUE)
-  fullData_sd<-sapply(full_d,sd,na.rm=TRUE)
-  
   # Creates a second, independent tidy data set with the average of each variable for each activity and each subject.
   datatable <- data.table(full_d)
   tidy<-datatable[,lapply(.SD,mean),by="Activity,Subject"]
